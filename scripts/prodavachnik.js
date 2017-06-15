@@ -195,10 +195,12 @@ function startApp() {
             method: "GET",
             url: kinveyAdvertsUrl,
             headers: kinveyAuthHeaders,
-            success: loadAdvertsSuccess
+            success: loadAdvertsSuccess,
+            error: handleAjaxError
         });
 
         function loadAdvertsSuccess(adverts) {
+            showInfo('Advertisements loaded.');
             if (adverts.length === 0) {
                 $('#ads').text('No advertisements available.');
             } else {
